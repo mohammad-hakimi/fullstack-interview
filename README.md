@@ -22,8 +22,8 @@ Before you begin, ensure you have installed the following on your system:
 First, clone the repository to your local machine:
 
 ```bash
-git clone [URL of the repository]
-cd [repository name]
+git clone https://github.com/Pugli-ai/fullstack-interview
+cd fullstack-interview
 ```
 
 ### Running the Application

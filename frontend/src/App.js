@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import AddButton from './Components/AddButton';
+import Task from './Components/Task';
+import TaskInput from './Components/TaskInput';
 
 function App() {
   const [tasks, setTasks] = useState([]);
-
+  const [taskText, setTaskText] = useState("");
   const addTask = (task) => {
     setTasks([...tasks, task]);
   };
@@ -10,9 +13,14 @@ function App() {
   return (
     <div className="App">
       <h1>To-Do List</h1>
-      {/* TODO Task input and add button */}
-      
-      {/* TODO List of tasks */}
+      <TaskInput onChange={value => {setTaskText(value)}} />
+      <AddButton onSubmit={() => {
+        addTask(taskText)
+        setTaskText("");
+      }}/>
+      {
+        tasks.map((task, i) => <Task key={i} title={task}/>)
+      }
     </div>
   );
 }

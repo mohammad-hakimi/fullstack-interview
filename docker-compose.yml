@@ -1,4 +1,19 @@
 version: '3'
 services:
   frontend:
+    build: 
+      dockerfile: frontend/Dockerfile
+      context: .
+    ports:
+      - "3000:3000"
+    container_name: frontend-development
+    volumes:
+      - ./frontend/src:/app/src
   backend:
+    build: 
+      dockerfile: backend/Dockerfile
+      context: .
+    ports:
+      - "8000:8000"
+    container_name: backend-development
+

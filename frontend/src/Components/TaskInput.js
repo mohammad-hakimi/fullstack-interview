@@ -1,16 +1,11 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
 
 export default function TaskInput(
-    onChange = () => {  }
+    {onChange, value, onSubmit}
 ) {
-    const [title, setTitle] = useState("");
-
-    useEffect(() => {
-        try {
-            onChange?.(title)
-        } catch {}
-    }, [title])
-    return <input type="text" value={title} onChange={e => {
-            setTitle(e.target.value);
+    return <input onKeyDown={key => {
+        if (key.key === "Enter") onSubmit()
+    }} placeholder={"Write task..."} type="text" value={value} onChange={e => {
+            onChange(e.target.value);
         }}/>
 }

@@ -1,8 +1,6 @@
-
-
 import React from "react"
 export default function AddButton(
-    onSubmit
+    {onSubmit}
 ) {
-    return <button onClick={onSubmit}>Add Task</button>
+    return <button onClick={() => onSubmit()}>Add Task</button>
 }

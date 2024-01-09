@@ -1,17 +1,15 @@
-
-
-import React, {useState} from "react"
+import React from "react"
 
 
 export default function Task(
-    {title}
+    {title, completed, onChangeStatus}
 ) {
-    const [isDone, setIsDone] = useState(false);
-    return <div className={"taskBox"} onClick={() => setIsDone(prev => !prev)}>
-        <h2  className={`taskTitle ${isDone ? "done" :""}`}>{title}</h2>
-        <input  type="checkbox" checked={isDone} onChange={e => {
+
+    return <div className={"taskBox"} onClick={() => onChangeStatus(!completed)}>
+        <h2 className={`taskTitle ${completed ? "done" : ""}`}>{title}</h2>
+        <input type="checkbox" checked={completed} onChange={e => {
             e.stopPropagation()
-            setIsDone(e.target.checked)
+            onChangeStatus(e.target.checked)
         }}/>
     </div>
 }
